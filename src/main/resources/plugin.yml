@@ -3,3 +3,6 @@ version: '1.0'
 main: me.miskynet.timer.Main
 api-version: '1.21'
 authors: [ MiSkynet ]
+commands:
+  timer:
+    description: The timer command
