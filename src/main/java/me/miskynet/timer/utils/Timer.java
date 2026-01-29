@@ -32,8 +32,20 @@ public class Timer {
         countDirection = countDirectionDirection;
     }
 
+    // get the direction the timer is counting in
     public countDirection getCountDirection() {
         return countDirection;
+    }
+
+    // get the color that the timer should have
+    // if the timer is paused, it will be red
+    // if the timer is running, it will be white
+    public String getTimerColor() {
+        if (running) {
+            return "&f";
+        }else {
+            return "&c";
+        }
     }
 
 }

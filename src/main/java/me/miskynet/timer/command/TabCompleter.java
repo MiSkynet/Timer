@@ -15,6 +15,8 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
 
         ArrayList<String> completion = new ArrayList<>();
 
+        // check if there are currently 0 args
+        // /timer </>
         if (strings.length == 1) {
             if ("start".startsWith(strings[0].toLowerCase())) {
                 completion.add("start");
@@ -34,6 +36,9 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             if ("direction".startsWith(strings[0].toLowerCase())) {
                 completion.add("direction");
             }
+
+            // check if there is one arg
+            // /timer <XY> </>
         }else if (strings.length == 2) {
             if (strings[0].equalsIgnoreCase("direction")) {
                 if ("up".startsWith(strings[1].toLowerCase())) {

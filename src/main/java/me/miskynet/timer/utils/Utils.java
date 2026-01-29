@@ -11,11 +11,13 @@ public class Utils {
 
     static Timer timer = Main.getInstance().timer;
 
+    // create a message component to use in #sendMessage();
     public static Component createMessage(String string) {
         Component component = LegacyComponentSerializer.legacyAmpersand().deserialize(string);
         return component;
     }
 
+    // format and display the timer
     public static void displayTimer() {
 
         // Start: Code by ChatGPT
@@ -42,18 +44,26 @@ public class Utils {
 
         for (Player player : Bukkit.getOnlinePlayers()) {
 
-            // Start: Code by ChatGPT
+            // Start: Code by ChatGPT (and my shit mixed in)
             StringBuilder sb = new StringBuilder();
 
-            if (totalTime >= WEEK)   sb.append(weeks).append("w ");
-            if (totalTime >= DAY)    sb.append(days).append("d ");
-            if (totalTime >= HOUR)   sb.append(hours).append("h ");
-            if (totalTime >= MINUTE) sb.append(minutes).append("m ");
+            String week = weeks <= 9 ? "0" + weeks + "w " : weeks + "w ";
+            if (totalTime >= WEEK)   sb.append(week);
 
-            sb.append(seconds).append("s");
+            String day = days <= 9 ? "0" + days + "d " : days + "d ";
+            if (totalTime >= DAY)    sb.append(day);
+
+            String hour = hours <= 9 ? "0" + hours + "h " : hours + "h ";
+            if (totalTime >= HOUR)   sb.append(hour);
+
+            String minute = minutes <= 9 ? "0" + minutes + "m " : minutes + "m ";
+            if (totalTime >= MINUTE) sb.append(minute);
+
+            String second = seconds <= 9 ? "0" + seconds + "s " : seconds + "s ";
+            sb.append(second);
             // End: Code by ChatGPT
 
-            Component actionbar = LegacyComponentSerializer.legacyAmpersand().deserialize(sb.toString());
+            Component actionbar = LegacyComponentSerializer.legacyAmpersand().deserialize(timer.getTimerColor() + sb);
             player.sendActionBar(actionbar);
         }
     }
