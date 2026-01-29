@@ -23,7 +23,6 @@ public class Timer {
     public enum countDirection {
         UP,
         DOWN
-
     }
 
     static countDirection countDirection = Timer.countDirection.UP;

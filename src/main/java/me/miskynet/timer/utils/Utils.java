@@ -18,52 +18,71 @@ public class Utils {
 
     public static void displayTimer() {
 
-        int time = timer.getTime();
+        // Start: Code by ChatGPT
+        int totalTime = timer.getTime();
+        int time = totalTime;
 
-        int weeks = 0;
-        int days = 0;
-        int hours = 0;
-        int minutes = 0;
-        int seconds = 0;
+        final int MINUTE = 60;
+        final int HOUR   = 60 * MINUTE;
+        final int DAY    = 24 * HOUR;
+        final int WEEK   = 7 * DAY;
 
-        while (time / 60 / 60 / 24 / 7 >= 1) {
-            weeks++;
-            time = time - (60 * 60 * 24 * 7);
-        }
+        int weeks = time / WEEK;
+        time %= WEEK;
 
-        while (time / 60 / 60 / 24 >= 1) {
-            days++;
-            time = time - (60 * 60 * 24);
-        }
+        int days = time / DAY;
+        time %= DAY;
 
-        while (time / 60 / 60 >= 1) {
-            hours++;
-            time = time - (60 * 60);
-        }
+        int hours = time / HOUR;
+        time %= HOUR;
 
-        while (time / 60  >= 1) {
-            minutes++;
-            time = time - (60);
-        }
-
-        seconds = time;
+        int minutes = time / MINUTE;
+        int seconds = time % MINUTE;
+        // End: Code by ChatGPT
 
         for (Player player : Bukkit.getOnlinePlayers()) {
 
-            String string = seconds + " " + minutes + " " + hours + " " + " " + days + " " + " " + weeks;
-            Component actionbar = LegacyComponentSerializer.legacyAmpersand().deserialize(string);
+            // Start: Code by ChatGPT
+            StringBuilder sb = new StringBuilder();
+
+            if (totalTime >= WEEK)   sb.append(weeks).append("w ");
+            if (totalTime >= DAY)    sb.append(days).append("d ");
+            if (totalTime >= HOUR)   sb.append(hours).append("h ");
+            if (totalTime >= MINUTE) sb.append(minutes).append("m ");
+
+            sb.append(seconds).append("s");
+            // End: Code by ChatGPT
+
+            Component actionbar = LegacyComponentSerializer.legacyAmpersand().deserialize(sb.toString());
             player.sendActionBar(actionbar);
         }
-
     }
 
-    public static void startDisplaying() {
+    // start the counting and the displaying
+    public static void start() {
+
         new BukkitRunnable() {
             @Override
             public void run() {
+                if (timer.running) {
+
+                    if (timer.getCountDirection().equals(Timer.countDirection.UP)) {
+                        timer.setTime(timer.getTime() + 1);
+                    }
+
+                    else if (timer.getCountDirection().equals(Timer.countDirection.DOWN)) {
+                        if (!(timer.getTime() <= 0)) {
+                            timer.setTime(timer.getTime() - 1);
+                        }else {
+                            timer.setRunning(false);
+                        }
+                    }
+                }
+
                 displayTimer();
             }
         }.runTaskTimer(Main.getInstance(), 0L, 20L);
+
     }
 
 }

@@ -1,6 +1,7 @@
 package me.miskynet.timer;
 
 import me.miskynet.timer.command.CommandManager;
+import me.miskynet.timer.command.TabCompleter;
 import me.miskynet.timer.utils.Timer;
 import me.miskynet.timer.utils.Utils;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,8 +15,9 @@ public final class Main extends JavaPlugin {
         // Plugin startup logic
 
         getCommand("timer").setExecutor(new CommandManager());
+        getCommand("timer").setTabCompleter(new TabCompleter());
 
-        Utils.startDisplaying();
+        Utils.start();
     }
 
     @Override
