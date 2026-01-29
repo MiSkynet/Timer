@@ -58,26 +58,29 @@ public class Functions {
         int time = 0;
 
         for (int i = 1; i < string.length; i++) {
-            if (string[i].endsWith("w")) {
-                string[i] = string[i].replaceAll("w", "");
 
-                time += Integer.parseInt(string[i]) * 60 * 60 * 24 * 7;
-            }else if (string[i].endsWith("d")) {
-                string[i] = string[i].replaceAll("d", "");
+            // unit represents w, d, h, m, s
+            char unit = string[i].charAt(string[i].length() - 1);
 
-                time += Integer.parseInt(string[i]) * 60 * 60 * 24;
-            } else if (string[i].endsWith("h")) {
-                string[i] = string[i].replaceAll("h", "");
+            // numb is the value the user has put in front of the unit
+            int numb = Integer.parseInt(string[i].substring(0, string[i].length() - 1));
 
-                time += Integer.parseInt(string[i]) * 60 * 60;
-            } else if (string[i].endsWith("m")) {
-                string[i] = string[i].replaceAll("m", "");
-
-                time += Integer.parseInt(string[i]) * 60;
-            } else if (string[i].endsWith("s")) {
-                string[i] = string[i].replaceAll("s", "");
-
-                time += Integer.parseInt(string[i]);
+            switch (unit) {
+                case 'w':
+                    time += numb * 60 * 60 * 24 * 7;
+                    break;
+                case 'd':
+                    time += numb * 60 * 60 * 24;
+                    break;
+                case 'h':
+                    time += numb * 60 * 60;
+                    break;
+                case 'm':
+                    time += numb * 60;
+                    break;
+                case 's':
+                    time += numb;
+                    break;
             }
         }
 
