@@ -17,6 +17,9 @@ public final class Main extends JavaPlugin {
         getCommand("timer").setExecutor(new CommandManager());
         getCommand("timer").setTabCompleter(new TabCompleter());
 
+        getConfig().options().copyDefaults();
+        saveDefaultConfig();
+
         Utils.start();
     }
 

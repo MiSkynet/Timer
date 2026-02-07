@@ -24,34 +24,34 @@ public class CommandManager implements CommandExecutor {
                 Functions.startTimer(commandSender);
                 return true;
             }
-
             // /timer pause
             else if (strings[0].equalsIgnoreCase("pause")) {
                 Functions.pauseTimer();
                 return true;
             }
-
             // /timer reset
             else if (strings[0].equalsIgnoreCase("reset")) {
                 Functions.resetTimer();
                 return true;
             }
-
             // /timer <set|add> <time>
             else if (strings[0].equalsIgnoreCase("set") || strings[0].equalsIgnoreCase("add")) {
                 Functions.setAddTime(strings);
                 return true;
             }
-
             // /timer reset
             else if (strings[0].equalsIgnoreCase("reset")) {
                 Functions.resetTimer();
                 return true;
             }
-
             // /timer direction <UP|DOWN>
             else if (strings[0].equalsIgnoreCase("direction")) {
                 Functions.setCountingDirection(strings);
+                return true;
+            }
+            // /timer remove <time>
+            else if (strings[0].equalsIgnoreCase("remove")) {
+                Functions.removeTime(strings);
                 return true;
             }
 

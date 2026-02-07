@@ -30,6 +30,31 @@ like LuckPerms to set these permissions.
 
 - - -
 
+### config.yml
+
+In the config.yml, you can set a custom format for the timer / what it should look like. In the following, I'll explain how to properly change values and don't break the entire thing. 
+So let's begin.
+
+At first, there is a string called `master-format`. In the default config, it will look like this:
+`master-format: "%weeks%%days%%hours%%minutes%%seconds%"`.
+This string contains the placeholders for the times below. The string `seconds.format` will replace the placeholder `%seconds%` in the `master-format`.
+
+The following "segments" are the format for the uniq times (weeks, days, hours, etc.). I'll explain it at the `seconds`, but this system applies on every other format.
+The format of `seconds` will, by default, look like this:
+
+```
+seconds:
+  format: "%seconds%s"
+  zero: true
+```
+
+The format represents the placeholder of the `master-format` (`%seconds%`). The `%seconds%` placeholder in `format` (NOT IN `master-format`) will be replaced by the
+seconds of the timer.
+
+If `zero` is set to `true`, this will set a 0 in front of the second as long as its smaller than 10. For example: Instead of `8` it would be `08`.
+
+- - -
+
 ### SRC-Code
 
 The code is a mess. I'm pretty sure there are more elegant ways to do some things, but I'm not the best

@@ -92,12 +92,47 @@ public class Functions {
 
     }
 
+    // set the counting direction of the timer
     public static void setCountingDirection(String[] strings) {
 
         if (strings[1].toUpperCase().equals(String.valueOf(Timer.countDirection.UP))) {
             timer.setCountDirection(Timer.countDirection.UP);
         }else if (strings[1].toUpperCase().equals(String.valueOf(Timer.countDirection.DOWN))) {
             timer.setCountDirection(Timer.countDirection.DOWN);
+        }
+
+    }
+
+    // remove a specific time off the timer
+    public static void removeTime(String[] string) {
+
+        int time = 0;
+
+        for (int i = 1; i < string.length; i++) {
+
+            // unit represents w, d, h, m, s
+            char unit = string[i].charAt(string[i].length() - 1);
+
+            // numb is the value the user has put in front of the unit
+            int numb = Integer.parseInt(string[i].substring(0, string[i].length() - 1));
+
+            switch (unit) {
+                case 'w':
+                    time -= numb * 60 * 60 * 24 * 7;
+                    break;
+                case 'd':
+                    time -= numb * 60 * 60 * 24;
+                    break;
+                case 'h':
+                    time -= numb * 60 * 60;
+                    break;
+                case 'm':
+                    time -= numb * 60;
+                    break;
+                case 's':
+                    time -= numb;
+                    break;
+            }
         }
 
     }
