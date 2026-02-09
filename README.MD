@@ -23,7 +23,7 @@ About the plugin. Here is a list of the commands and the arguments that are vali
 | **/timer pause**     | none                | /timer pause        | Pause the timer                                                                                                                           |
 | **/timer reset**     | none                | /timer reset        | Reset the timer. The time will be set to 0 seconds.                                                                                       |
 | **/timer direction** | **UP / DOWN**       | /timer direction UP | Define if the timer should count down or count up. If it should count down, the time on the timer has to be at least 1 second.            |
-
+| **/timer remove**    | **(time)s/m/h/d/w** | /timer remove 6m 7s | Remove time from the timer. The arguemnts are the same as for the set/add command.
 #### Permissions:
 To use these commands, you will also have to have the permission `timer.timer`. You can either be OP on your server or use a permissions plugin
 like LuckPerms to set these permissions.
