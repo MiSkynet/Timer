@@ -17,39 +17,25 @@ public class Functions {
         if (timer.getCountDirection().equals(Timer.countDirection.DOWN)) {
             if (!(timer.getTime() >= 1)) {
                 String string = "The time on the timer must be at least on second! Please set it with /timer set 1s";
-                commandSender.sendMessage(Utils.createMessage(string));
+                commandSender.sendMessage(Utils.createComponentMessage(string));
                 return;
             }
         }
 
         timer.setRunning(true);
-
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            if (timer.getTime() == 0) {
-                player.sendMessage("The timer was started!");
-            }else {
-                player.sendMessage("The timer was continued!");
-            }
-        }
     }
 
     // pause the timer
     public static void pauseTimer() {
         timer.setRunning(false);
 
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            player.sendMessage("The timer was paused!");
-        }
+
     }
 
     // reset the timer
     public static void resetTimer() {
         timer.setRunning(false);
         timer.setTime(0);
-
-        for (Player player : Bukkit.getOnlinePlayers()) {
-            player.sendMessage("The timer has been reset!");
-        }
     }
 
     // set or add a specific time to the timer
@@ -116,8 +102,6 @@ public class Functions {
             // numb is the value the user has put in front of the unit
             int numb = Integer.parseInt(string[i].substring(0, string[i].length() - 1));
 
-            Bukkit.getLogger().info("Current Time: " + timer.getTime());
-
             switch (unit) {
                 case 'w':
                     time -= numb * 60 * 60 * 24 * 7;
@@ -137,10 +121,12 @@ public class Functions {
             }
         }
 
-        Bukkit.getLogger().info("New Time: " + time);
-
         timer.setTime(time);
 
+    }
+
+    public static void reload() {
+        Main.getInstance().reloadConfig();
     }
 
 }

@@ -28,6 +28,7 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             checkCompletion(strings[0], "add");
             checkCompletion(strings[0], "direction");
             checkCompletion(strings[0], "remove");
+            checkCompletion(strings[0], "reload");
 
             // check if there is one arg
             // /timer <XY> </>

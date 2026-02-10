@@ -1,5 +1,7 @@
 package me.miskynet.timer.utils;
 
+import me.miskynet.timer.Main;
+
 public class Timer {
 
     static int seconds = 0;
@@ -41,11 +43,13 @@ public class Timer {
     // if the timer is paused, it will be red
     // if the timer is running, it will be white
     public String getTimerColor() {
+        String color = "&6";
         if (running) {
-            return "&f";
+            color = Main.getInstance().getConfig().getString("colors.running");
         }else {
-            return "&c";
+            color = Main.getInstance().getConfig().getString("colors.paused");
         }
+        return color;
     }
 
 }

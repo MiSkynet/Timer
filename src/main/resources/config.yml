@@ -1,3 +1,6 @@
+colors:
+  paused: "&c"
+  running: "&a"
 display:
   master-format: "%weeks%%days%%hours%%minutes%%seconds%"
   seconds:
@@ -15,3 +18,15 @@ display:
   weeks:
     format: "%weeks%w "
     zero: true
+
+messages:
+  started: "The timer was started!"
+  continued: "The timer was continued!"
+  paused: "The timer was paused!"
+  reset: "The timer has been reset!"
+  set: "The timer was set to a new time!"
+  add: "A time was added to the timer"
+  counting-direction.up: "The timer is now counting up!"
+  counting-direction.down: "The timer is now counting down!"
+  remove: "A time was removed from the timer!"
+  reload: "The timer was reloaded!"

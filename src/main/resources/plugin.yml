@@ -1,5 +1,5 @@
 name: Timer
-version: '1.1.1'
+version: '1.2.0'
 main: me.miskynet.timer.Main
 api-version: '1.21'
 authors: [ MiSkynet ]
