@@ -48,7 +48,7 @@ public class Functions {
         timer.setTime(0);
 
         for (Player player : Bukkit.getOnlinePlayers()) {
-            player.sendMessage("The timer was reseted!");
+            player.sendMessage("The timer has been reset!");
         }
     }
 
@@ -106,7 +106,7 @@ public class Functions {
     // remove a specific time off the timer
     public static void removeTime(String[] string) {
 
-        int time = 0;
+        int time = timer.getTime();
 
         for (int i = 1; i < string.length; i++) {
 
@@ -115,6 +115,8 @@ public class Functions {
 
             // numb is the value the user has put in front of the unit
             int numb = Integer.parseInt(string[i].substring(0, string[i].length() - 1));
+
+            Bukkit.getLogger().info("Current Time: " + timer.getTime());
 
             switch (unit) {
                 case 'w':
@@ -134,6 +136,10 @@ public class Functions {
                     break;
             }
         }
+
+        Bukkit.getLogger().info("New Time: " + time);
+
+        timer.setTime(time);
 
     }
 

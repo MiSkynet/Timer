@@ -1,0 +1,17 @@
+display:
+  master-format: "%weeks%%days%%hours%%minutes%%seconds%"
+  seconds:
+    format: "%seconds%s"
+    zero: true
+  minutes:
+    format: "%minutes%m "
+    zero: true
+  hours:
+    format: "%hours%h "
+    zero: true
+  days:
+    format: "%days%d "
+    zero: true
+  weeks:
+    format: "%weeks%w "
+    zero: true
