@@ -3,9 +3,7 @@ package me.miskynet.timer.command;
 import me.miskynet.timer.Main;
 import me.miskynet.timer.utils.Timer;
 import me.miskynet.timer.utils.Utils;
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
 public class Functions {
 
@@ -128,5 +126,4 @@ public class Functions {
     public static void reload() {
         Main.getInstance().reloadConfig();
     }
-
 }

@@ -1,33 +1,49 @@
 package me.miskynet.timer.utils;
 
 import me.miskynet.timer.Main;
+import org.bukkit.configuration.file.FileConfiguration;
 
 public class Timer {
 
-    static int seconds = 0;
-
-    // set and get the time
-    public void setTime(int value) {
-        seconds = value;
-    }
-
-    public int getTime() {
-        return seconds;
-    }
+    private int seconds;
 
     boolean running = false;
-
-    // set if the timer is running or not
-    public void setRunning(boolean setRunning) {
-        running = setRunning;
-    }
 
     public enum countDirection {
         UP,
         DOWN
     }
 
+    public Timer() {
+        this.seconds = CustomConfig.get("timer.yml").getInt("time");
+        // check if a time already exists in the config.yml
+        int configTime = CustomConfig.get("timer.yml").getInt("time");
+        if (configTime > 0) {
+            seconds = configTime;
+        }
+    }
+
     static countDirection countDirection = Timer.countDirection.UP;
+
+    // return if the timer is running or not
+    public Boolean isRunning() {
+        return running;
+    }
+
+    // set the timer in the running state / put it out of the running state (pause it)
+    public void setRunning(boolean setRunning) {
+        running = setRunning;
+    }
+
+    // set the time
+    public void setTime(int value) {
+        seconds = value;
+    }
+
+    // get the time
+    public int getTime() {
+        return seconds;
+    }
 
     // set and get the direction the timer is currently counting in
     public void setCountDirection(countDirection countDirectionDirection) {
@@ -50,6 +66,12 @@ public class Timer {
             color = Main.getInstance().getConfig().getString("colors.paused");
         }
         return color;
+    }
+
+    // save the time in the config.yml
+    public void saveTime() {
+        CustomConfig.get("timer.yml").set("time", seconds);
+        CustomConfig.save("timer.yml");
     }
 
 }

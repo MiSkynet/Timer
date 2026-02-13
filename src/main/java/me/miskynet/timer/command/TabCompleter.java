@@ -30,6 +30,7 @@ public class TabCompleter implements org.bukkit.command.TabCompleter {
             checkCompletion(strings[0], "remove");
             checkCompletion(strings[0], "reload");
 
+
             // check if there is one arg
             // /timer <XY> </>
         }else if (strings.length == 2) {

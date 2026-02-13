@@ -1,6 +1,9 @@
+# These are the colors the timer can have!
 colors:
   paused: "&c"
   running: "&a"
+
+# This defines the display of the timer
 display:
   master-format: "%weeks%%days%%hours%%minutes%%seconds%"
   seconds:
@@ -19,6 +22,7 @@ display:
     format: "%weeks%w "
     zero: true
 
+# These are most of the messages
 messages:
   started: "The timer was started!"
   continued: "The timer was continued!"

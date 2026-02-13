@@ -99,7 +99,6 @@ public class CommandManager implements CommandExecutor {
                 }
                 return true;
             }
-
         }else {
             Component message = Utils.createComponentMessage("&cSorry, but please us the correct command form!");
             commandSender.sendMessage(message);

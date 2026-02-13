@@ -119,6 +119,7 @@ public class TimerManager {
                 }
 
                 sendTimerToPlayers();
+                timer.saveTime();
             }
         }.runTaskTimer(Main.getInstance(), 0L, 20L);
 
