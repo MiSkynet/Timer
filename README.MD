@@ -2,8 +2,7 @@
 
 This plugin creates you a simple timer. The plugin is designed for 1.21.10 as of right now. 
 There maybe some updates in the future, but I just was bored and wanted to create a small plugin, so I'm 
-not quiet sure yet if I continue this project. As of right now, the time is also not saved anywhere.
-Once your server restarts, the time on the timer will be gone.
+not quiet sure yet if I continue this project.
 I'm happy with the plugin in the current state, and you can use it right away. Simply drag and drop the
 `.jar` into your plugin folder and give your server a quick restart.
 
